@@ -136,15 +136,9 @@ class BusManager(
 ```
 
 **성과**: 
-- 서울/경기도 버스 API 일관된 구조 통합
+- 서울/경기도/인천 버스 API 일관된 구조 통합
 - 중복 로직 제거 및 간결한 코드 구조 유지
 - 새로운 지역 추가 시 전략 객체만 구현하면 되는 확장성 확보
-
-## 🛠 기술 스택
-- **Backend**: Spring Boot, Kotlin
-- **Database**: MySQL
-- **External APIs**: 공공데이터 API, ODSay API, TMAP API
-- **Optimization**: 코루틴 기반 병렬 처리, SSE 스트리밍, 캐싱
 
 ## 🎯 핵심 개발 철학
 - **도메인과 인프라 레이어 분리**를 통한 기술 의존성 최소화
