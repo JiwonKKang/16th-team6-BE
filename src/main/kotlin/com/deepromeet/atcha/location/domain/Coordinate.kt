@@ -1,6 +1,8 @@
 package com.deepromeet.atcha.location.domain
 
-import com.deepromeet.atcha.common.annotation.NoArg
+import com.deepromeet.atcha.location.exception.LocationError
+import com.deepromeet.atcha.location.exception.LocationException
+import com.deepromeet.atcha.shared.annotation.NoArg
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.pow
@@ -13,8 +15,13 @@ data class Coordinate(
     val lon: Double
 ) {
     init {
-        require(lat in -90.0..90.0) { "잘못된 위도 값입니다: $lat (유효 범위: -90.0 ~ 90.0)" }
-        require(lon in -180.0..180.0) { "잘못된 경도 값입니다: $lon (유효 범위: -180.0 ~ 180.0)" }
+        require(lat in -90.0..90.0) {
+            throw LocationException.of(LocationError.INVALID_LATITUDE, "위도는 -90.0에서 90.0 사이에 있어야 합니다. 입력된 값: $lat")
+        }
+
+        require(lon in -180.0..180.0) {
+            throw LocationException.of(LocationError.INVALID_LONGITUDE, "경도는 -180.0에서 180.0 사이에 있어야 합니다. 입력된 값: $lon")
+        }
     }
 
     companion object {

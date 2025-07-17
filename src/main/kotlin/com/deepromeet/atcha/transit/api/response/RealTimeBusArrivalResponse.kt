@@ -1,8 +1,8 @@
 package com.deepromeet.atcha.transit.api.response
 
-import com.deepromeet.atcha.transit.domain.BusCongestion
-import com.deepromeet.atcha.transit.domain.BusStatus
-import com.deepromeet.atcha.transit.domain.RealTimeBusArrival
+import com.deepromeet.atcha.transit.domain.bus.BusCongestion
+import com.deepromeet.atcha.transit.domain.bus.BusRealTimeInfo
+import com.deepromeet.atcha.transit.domain.bus.BusStatus
 import com.fasterxml.jackson.annotation.JsonInclude
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -16,14 +16,14 @@ data class RealTimeBusArrivalResponse(
     val expectedArrivalTime: String?,
     val vehicleId: String?
 ) {
-    constructor(realTimeBusArrival: RealTimeBusArrival) : this(
-        realTimeBusArrival.busStatus,
-        realTimeBusArrival.remainingTime,
-        realTimeBusArrival.remainingStations,
-        realTimeBusArrival.isLast,
-        realTimeBusArrival.busCongestion,
-        realTimeBusArrival.remainingSeats,
-        realTimeBusArrival.expectedArrivalTime?.toString(),
-        realTimeBusArrival.vehicleId
+    constructor(busRealTimeInfo: BusRealTimeInfo) : this(
+        busRealTimeInfo.busStatus,
+        busRealTimeInfo.remainingTimeExtra,
+        busRealTimeInfo.remainingStations,
+        busRealTimeInfo.isLast,
+        busRealTimeInfo.busCongestion,
+        busRealTimeInfo.remainingSeats,
+        busRealTimeInfo.expectedArrivalTime?.toString(),
+        busRealTimeInfo.vehicleId
     )
 }

@@ -1,6 +1,9 @@
 package com.deepromeet.atcha.support
 
+import com.deepromeet.atcha.route.application.LastRouteAppender
+import com.deepromeet.atcha.user.application.UserAppender
 import org.junit.jupiter.api.extension.ExtendWith
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
 @ExtendWith(DatabaseCleanerExtension::class)
@@ -12,4 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest
         "jwt.refresh.secret=thisisfortestddGVzdFJmZXNoU2VjcmV0S2V5VmFsdWUxMjM0NTY3OA"
     ]
 )
-abstract class BaseServiceTest
+abstract class BaseServiceTest {
+    @Autowired
+    protected lateinit var userAppender: UserAppender
+
+    @Autowired
+    protected lateinit var lastRouteAppender: LastRouteAppender
+}
